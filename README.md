@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💻 Task Manager Frontend
 
-## Getting Started
+Interface moderna para gerenciamento de projetos e tarefas, construída com **Next.js 15**, **React**, **Zustand** e **Tailwind CSS**. Este projeto consome uma API backend construída com Node.js + Express + Prisma.
 
-First, run the development server:
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Zustand](https://github.com/pmndrs/zustand) (Gerenciamento de estado)
+- [Axios](https://axios-http.com/) (Requisições HTTP)
+- [next-themes](https://github.com/pacocoursey/next-themes) (Modo escuro/claro)
+
+---
+
+## 📁 Estrutura de Pastas
+
+app/
+├─ **dashboard** / # Layout e páginas protegidas
+├─ **login/** # Página de login
+├─ **register/** # Página de registro
+├─ **layout.tsx** # Layout global
+├─ **page.tsx** # Redireciona login/dashboard
+   **components/** # Componentes reutilizáveis (Sidebar, UserModal etc)
+   **lib/axios.ts** # Configuração do Axios com interceptor JWT
+   **middleware/** # Middleware de rota protegida
+   **store/ # Zustand** (auth e project)
+   **globals.css** # Estilos globais
+
+
+## 🧑‍💻 Como Rodar o Projeto
+
+### 1. Clone o repositório
 
 ```bash
+git clone https://github.com/lucascodogno-dev/crudFrontend.git
+
+Instalar dependências
+npm install ou yarn
+
+Iniciar app
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+npm run dev     # Inicia Next.js localmente
+npm run build   # Compila para produção
+npm run start   # Roda o servidor Next.js de produção
+npm run test    # Roda testes (quando houver)
+
+** Endpoints Utilizados **
+| Método | Rota                  | Descrição                       |
+| ------ | --------------------- | ------------------------------- |
+| POST   | /api/auth/register    | Registro de novo usuário        |
+| POST   | /api/auth/login       | Login e retorno de token        |
+| GET    | /api/auth/me          | Retorna usuário autenticado     |
+| GET    | /api/projects         | Lista todos os projetos do user |
+| POST   | /api/projects         | Cria um novo projeto            |
+| PUT    | /api/projects/\:id    | Edita um projeto                |
+| DELETE | /api/projects/\:id    | Exclui um projeto               |
+| GET    | /api/tasks?projectId= | Lista tarefas de um projeto     |
+| POST   | /api/tasks            | Cria uma nova tarefa            |
+| PUT    | /api/tasks/\:id       | Atualiza uma tarefa             |
+| DELETE | /api/tasks/\:id       | Exclui uma tarefa               |
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**API Base:** NEXT_PUBLIC_API_URL=http://localhost:4000/api
+**Autenticação:** JWT armazenado no localStorage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Funcionalidades**
+ Registro/Login com persistência de sessão
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ Listagem e criação de projetos e tarefas
 
-## Learn More
+ Interface moderna com Tailwind 
 
-To learn more about Next.js, take a look at the following resources:
+ Dashboard protegida com roteamento dinâmico
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Futuras melhorias
+Gráficos de progresso dos projetos
 
-## Deploy on Vercel
+Upload de arquivos para tarefas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Compartilhamento de projetos entre usuários
