@@ -66,6 +66,7 @@ npm run test    # Roda testes (quando houver)
 ```
 
 **API Base:** NEXT_PUBLIC_API_URL=http://localhost:4000/api
+
 **Autenticação:** JWT armazenado no localStorage
 
 **Funcionalidades**
